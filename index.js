@@ -1,12 +1,13 @@
 const YOUTUBE_SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search';
 
-function getDataFromApi(searchTerm, callback) {
+function getDataFromApi(searchTerm, callback, page) {
   const settings = {
     url: YOUTUBE_SEARCH_URL,
     data: {
       q: `${searchTerm}`,
       key: 'AIzaSyDrZQIOJs7kdA1lIk1aExpN01EGDfNeBh8',
       part: 'snippet',
+      pageToken: `${page}`,
     },
     dataType: 'json',
     type: 'GET',
@@ -26,17 +27,10 @@ function renderResults(result) {
   `;
 }
 
-/* function renderNav() {
-  return `
-    <div class='resultsNav'>
-      <
-    </div>
-  `
-} */
-
 function displaySearchData(data) {
   const results = data.items.map((item, index) => renderResults(item));
   $('.js-search-results').html(results);
+  $('.js-navResults').removeClass('hidden');
 }
 
 function watchSubmit() {
@@ -45,8 +39,15 @@ function watchSubmit() {
     const queryTarget = $(event.currentTarget).find('.js-query');
     const query = queryTarget.val();
     queryTarget.val('');
-    getDataFromApi(query, displaySearchData);
+    getDataFromApi(query, displaySearchData, '');
   });
+}
+
+function watchNext() {
+  $('.js-next-results').click(event => {
+    event.preventDefault();
+
+  })
 }
 
 $(watchSubmit);
