@@ -1,6 +1,62 @@
+* {
+  box-sizing: border-box;
+}
+
+header h1 {
+  font-size: 28px;
+}
+
 body {
-  padding-top: 50px;
   padding-left: 10px;
+  padding-right: 10px;
+  color: white;
+  background-color: #0050A8;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+a {
+  color: white;
+  font-weight: bold;
+}
+
+.js-search-form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin: auto;
+  max-width: 520px;
+}
+
+
+.js-query,
+.searchButton {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+}
+
+.searchButton {
+  color: white;
+  background-color: #0050A8;
+  margin-top: 10px;
+  font-weight: bold;
+  border: 2px solid white;
+}
+
+.hidden {
+  display: none;
+}
+
+a:hover,
+a:focus,
+.searchButton:focus,
+.js-query:focus {
+  outline: 5px dotted red;
 }
 
 .hidden {

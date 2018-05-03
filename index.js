@@ -19,8 +19,7 @@ function getDataFromApi(searchTerm, callback, page) {
 function renderResults(result) {
   return `
     <div>
-      <a href='http://www.youtube.com/watch?v=${result.id.videoId}'><img src='${result.snippet.thumbnails.medium.url}'
-      ></a>
+      <a href='http://www.youtube.com/watch?v=${result.id.videoId}'><img src='${result.snippet.thumbnails.medium.url}' alt="video thumbnail"></a>
       <h2> ${result.snippet.title} </h2>
       <p>See more from this <a href='http://www.youtube.com/channel/${result.snippet.channelId}'>channel</a></p>
     </div>
@@ -30,6 +29,7 @@ function renderResults(result) {
 function displaySearchData(data) {
   const results = data.items.map((item, index) => renderResults(item));
   $('.js-search-results').html(results);
+  $('#resultsHead').removeClass('hidden');
   $('.js-navResults').removeClass('hidden');
 }
 
